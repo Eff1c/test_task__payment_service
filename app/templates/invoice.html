@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block title %}Pay{% endblock %}
+
+{% block page_content %}
+    <br>
+    <h3>Pay</h3>
+    <hr>
+    <form method="{{ data['method'] }}" action="{{ data['url'] }}">
+        <input name="lang" value="ru" type="hidden"/>
+        {% for input_name in data["data"] %}
+            <label class="control-label" for="{{ input_name }}">{{ input_name }}</label>
+            <input name="{{ input_name }}" value="{{ data['data'][input_name] }}" class="form-control"/>
+            <br>
+        {% endfor %}
+        <input type="submit" class="btn btn-warning btn-block" value="Confirm">
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

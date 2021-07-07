@@ -1,0 +1,22 @@
+<ul class="payments">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Sum</th>
+                <th scope="col">Currency</th>
+                <th scope="col">Description</th>
+                <th scope="col" style="width: 12%;">Datetime pay</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payment in payments %}
+            <tr>
+                <td>{{ '%0.2f'|format(payment.sum) }}</td>
+                <td>{{ payment.currency.name }}</td>
+                <td>{{ payment.product_description }}$</td>
+                <td>{{ moment(payment.timestamp).format('DD/MM/YYYY HH:mm:ss') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</ul>

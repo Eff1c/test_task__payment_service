@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Index{% endblock %}
+
+{% block page_content %}
+    <br>
+    <h1>New payment</h1>
+    <hr>
+
+    {{ render_form(form) }}
+
+    <h2>Payments</h2>
+    {% include '_payments.html' %}
+
+    {% if pagination %}
+    <div class="pagination">
+        {{ macros.pagination_widget(pagination, ".index") }}
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

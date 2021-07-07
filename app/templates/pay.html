@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+
+{% block title %}Pay{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+        <br>
+        <h3>Please confirm pay</h3>
+        <hr>
+        <form name="Pay" method="post" action="https://pay.piastrix.com/ru/pay" accept-charset="UTF-8">
+            <input type="hidden" name="amount" value="{{ payment.sum }}"/>
+            <input type="hidden" name="currency" value="{{ code_currency }}"/>
+            <input type="hidden" name="shop_id" value="{{ shop_id }}"/>
+            <input type="hidden" name="sign" value="{{ SignatureValue }}"/>
+            <input type="hidden" name="shop_order_id" value="{{ payment.id }}"/>
+            <input type="submit" class="btn btn-warning btn-block" value="Confirm">
+            <input type="hidden" name="description" value="Test invoice"/> 
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}
