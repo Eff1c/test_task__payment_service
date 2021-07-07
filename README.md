@@ -15,5 +15,6 @@ flask shell
 ```
 And if you want to create test data on payments
 ```
+>>> from app.fake import payments
 >>> payments()
 ```
